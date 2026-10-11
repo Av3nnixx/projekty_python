@@ -1,9 +1,18 @@
 import pygame
+import os
+import sys
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 class Button:
     def __init__(self,x,y,image,sc_value):
         self.x = x
         self.y = y
-        self.img = pygame.image.load(image).convert_alpha()
+        self.img = pygame.image.load(resource_path(image)).convert_alpha()
 
         prawdziwe_wymiary = self.img.get_bounding_rect()
         self.img = self.img.subsurface(prawdziwe_wymiary)
