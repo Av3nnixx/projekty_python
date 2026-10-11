@@ -1,4 +1,5 @@
-
+import os
+import sys
 import pygame
 import button
 from random import randint
@@ -7,6 +8,13 @@ pygame.init()
 window = pygame.display.set_mode((1280,720))
 background = pygame.image.load("tlo.png")
 pygame.display.set_caption("Menu")
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 class Menu:
     def __init__(self):
         pass
