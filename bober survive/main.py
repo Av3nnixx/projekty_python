@@ -4,10 +4,7 @@ import pygame
 import button
 from random import randint
 #w
-pygame.init()
-window = pygame.display.set_mode((1280,720))
-background = pygame.image.load("tlo.png")
-pygame.display.set_caption("Menu")
+
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
@@ -15,6 +12,10 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+pygame.init()
+window = pygame.display.set_mode((1280,720))
+background = pygame.image.load(resource_path("tlo.png"))
+pygame.display.set_caption("Menu")
 class Menu:
     def __init__(self):
         pass
@@ -25,7 +26,7 @@ class Player:
     def __init__(self):
         self.x_cord = 0
         self.y_cord = 0
-        self.image = pygame.image.load("boberkurwa.png")
+        self.image = pygame.image.load(resource_path("boberkurwa.png"))
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.speed = 2
@@ -54,7 +55,7 @@ class Player:
 
 class Trap:
     def __init__(self):
-        self.image = pygame.image.load("bobertrap.png").convert_alpha()
+        self.image = pygame.image.load(resource_path("bobertrap.png")).convert_alpha()
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self._y_cord = randint(0, 720 )
@@ -75,7 +76,7 @@ class Trap:
     def change_image(self):
 
         if self.done_change == False :
-            self.image = pygame.image.load("cactus.png")
+            self.image = pygame.image.load(resource_path("cactus.png"))
             self.dmgable = True
             self.image = pygame.transform.scale(self.image, (0.5 * self.width, 0.5 * self.height))
             self.trap_mask = pygame.mask.from_surface(self.image)
@@ -131,7 +132,7 @@ class Axe:
         self._x_cord = 0
         self._y_cord = 0
         self.angle = 1
-        self.image = pygame.image.load("sikiera.png").convert_alpha()
+        self.image = pygame.image.load(resource_path("sikiera.png")).convert_alpha()
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.image = pygame.transform.scale(self.image, (0.5 * self.width,0.5 * self.height))
@@ -191,7 +192,7 @@ class Cash:
     def __init__(self):
         self.x_cord = randint(100,1180)
         self.y_cord = randint(80,620)
-        self.image = pygame.image.load("platypek.png")
+        self.image = pygame.image.load(resource_path("platypek.png"))
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
@@ -207,7 +208,7 @@ class Attribute:
         self.boost_time= boost_time
         self.y_cord = randint(0, 720)
         self.x_cord = randint(0, 1280)
-        self.image = pygame.image.load(image_path).convert_alpha()
+        self.image = pygame.image.load(resource_path(image_path)).convert_alpha()
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.image = pygame.transform.scale(self.image, (sc_value * self.width, sc_value * self.height))
@@ -271,7 +272,7 @@ def main():
     score = 0
     pause_title = Menu()
     barszcze = []
-    go_screen = pygame.image.load("Game over.png")
+    go_screen = pygame.image.load(resource_path("Game over.png"))
     difficulty = 1 + score / 10
     while run:
         #ticks
