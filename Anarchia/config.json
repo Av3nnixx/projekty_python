@@ -1,0 +1,9 @@
+{
+      "text": "Kto chce ity tpa",
+      "chat_key": "y",
+      "key_to_stop": "[",
+      "key_to_start": "]",
+      "start_volume": 0.10,
+      "stop_volume": 0.10,
+      "friends_nicknames":  [ "Notch"]
+}
